@@ -1,0 +1,270 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Localazy
+providerId: localazy
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: false
+tags:
+- Localization
+- Translation
+- Internationalization
+- i18n
+- L10n
+- Translation Management
+- Plans
+description: >-
+  Localazy uses subscription tiers priced on the number of source keys managed
+  across all projects. One source key translated into many languages still
+  counts as a single source key, and translations to additional languages are
+  unlimited and do not increase the source-key count. All plans include
+  unlimited seats. Paid plans include a trial; the Business plan offers a 14-day
+  trial. API access (import/upload, export/download, files, languages, projects)
+  is available across plans, with per-project daily import and fetch request
+  ceilings that scale by tier.
+notes: >-
+  Prices and source-key limits reflect the public Localazy pricing page and are
+  subject to change; verify on reconciliation. Annual billing offers roughly two
+  months of savings versus monthly.
+sources:
+- https://localazy.com/pricing
+- https://localazy.com/docs/api/limits
+plans:
+- id: localazy-free
+  name: Free
+  type: free
+  description: >-
+    Core localization features for small, open-source, and nonprofit projects,
+    with API access at the lowest daily request ceilings.
+  entries:
+  - label: Source Keys
+    name: source_keys
+    type: limit
+    metric: source_keys
+    limit: 200
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $0
+    userMultiplied: false
+  - label: Import Requests
+    name: import_requests
+    type: limit
+    metric: requests
+    limit: 100
+    timeFrame: day
+    geo: global
+    unit: 1
+    price: included
+    userMultiplied: false
+  - label: Fetch Requests
+    name: fetch_requests
+    type: limit
+    metric: requests
+    limit: 100
+    timeFrame: day
+    geo: global
+    unit: 1
+    price: included
+    userMultiplied: false
+  elements:
+  - name: Import / Upload
+  - name: Export / Download
+  - name: Files
+  - name: Languages
+  - name: Projects
+  - name: Unlimited Seats
+  - name: Unlimited Target Languages
+- id: localazy-professional
+  name: Professional
+  type: subscription
+  description: >-
+    Growing teams with higher source-key limits and increased daily API request
+    ceilings.
+  entries:
+  - label: Subscription
+    name: subscription
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $34/mo
+    userMultiplied: false
+  - label: Source Keys
+    name: source_keys
+    type: limit
+    metric: source_keys
+    limit: 1000
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: included
+    userMultiplied: false
+  - label: Import Requests
+    name: import_requests
+    type: limit
+    metric: requests
+    limit: 250
+    timeFrame: day
+    geo: global
+    unit: 1
+    price: included
+    userMultiplied: false
+  - label: Fetch Requests
+    name: fetch_requests
+    type: limit
+    metric: requests
+    limit: 1000
+    timeFrame: day
+    geo: global
+    unit: 1
+    price: included
+    userMultiplied: false
+  elements:
+  - name: Import / Upload
+  - name: Export / Download
+  - name: Files
+  - name: Languages
+  - name: Projects
+  - name: Unlimited Seats
+  - name: Unlimited Target Languages
+- id: localazy-autopilot
+  name: Autopilot
+  type: subscription
+  description: >-
+    Most popular tier, adding fully automatic AI translation on top of higher
+    source-key limits.
+  entries:
+  - label: Subscription
+    name: subscription
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $78/mo
+    userMultiplied: false
+  - label: Source Keys
+    name: source_keys
+    type: limit
+    metric: source_keys
+    limit: 3500
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: included
+    userMultiplied: false
+  - label: Import Requests
+    name: import_requests
+    type: limit
+    metric: requests
+    limit: 250
+    timeFrame: day
+    geo: global
+    unit: 1
+    price: included
+    userMultiplied: false
+  - label: Fetch Requests
+    name: fetch_requests
+    type: limit
+    metric: requests
+    limit: 1000
+    timeFrame: day
+    geo: global
+    unit: 1
+    price: included
+    userMultiplied: false
+  elements:
+  - name: Automatic AI Translation
+  - name: Import / Upload
+  - name: Export / Download
+  - name: Files
+  - name: Languages
+  - name: Projects
+  - name: Unlimited Seats
+  - name: Unlimited Target Languages
+- id: localazy-business
+  name: Business
+  type: subscription
+  description: >-
+    Larger localization programs with the highest published source-key limits
+    and daily API request ceilings, plus a 14-day trial.
+  entries:
+  - label: Subscription
+    name: subscription
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $175/mo
+    userMultiplied: false
+  - label: Source Keys
+    name: source_keys
+    type: limit
+    metric: source_keys
+    limit: 10000
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: included
+    userMultiplied: false
+  - label: Import Requests
+    name: import_requests
+    type: limit
+    metric: requests
+    limit: 1000
+    timeFrame: day
+    geo: global
+    unit: 1
+    price: included
+    userMultiplied: false
+  - label: Fetch Requests
+    name: fetch_requests
+    type: limit
+    metric: requests
+    limit: 5000
+    timeFrame: day
+    geo: global
+    unit: 1
+    price: included
+    userMultiplied: false
+  elements:
+  - name: Automatic AI Translation
+  - name: Import / Upload
+  - name: Export / Download
+  - name: Files
+  - name: Languages
+  - name: Projects
+  - name: Unlimited Seats
+  - name: Unlimited Target Languages
+- id: localazy-enterprise
+  name: Enterprise
+  type: enterprise
+  description: >-
+    Custom source-key volumes, customizable API request limits, organization
+    tokens, and negotiated terms. Contact Localazy sales.
+  entries:
+  - label: Enterprise Agreement
+    name: enterprise
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Custom Source-Key Volume
+  - name: Customizable API Request Limits
+  - name: Organization Tokens
+  - name: Priority Support
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

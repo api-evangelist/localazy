@@ -1,0 +1,100 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Localazy
+providerId: localazy
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: false
+tags:
+- Localization
+- Translation
+- Internationalization
+- i18n
+- L10n
+- Translation Management
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of Localazy spend. Localazy bills on a subscription basis priced by
+  the number of source keys managed across all projects, not per request or per
+  translated word. Translating a source key into additional languages does not
+  increase the source-key count, and target languages are unlimited. Plan tiers
+  (Free, Professional, Autopilot, Business, Enterprise) bundle source-key limits
+  and per-project daily API request ceilings. API usage itself is included in the
+  subscription, with daily import and fetch ceilings rather than metered charges.
+notes: >-
+  Source-key limits and plan prices are subject to change; verify against the
+  Localazy pricing page during reconciliation. Cost optimization centers on
+  staying within a tier's source-key allowance and using the Localazy CDN for
+  production fetches.
+sources:
+- https://localazy.com/pricing
+- https://localazy.com/docs/api/limits
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Localazy
+serviceCategory: Localization and Translation
+billingModel:
+  pricingCategory: Subscription
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+  - Usage
+  - Purchase
+  - Adjustment
+focusColumns:
+  ServiceName: Localazy
+  ServiceCategory: Localization and Translation
+  ProviderName: Localazy
+  PublisherName: Localazy
+  InvoiceIssuerName: Localazy
+  BillingCurrency: USD
+  ChargeCategory: Purchase
+  PricingCategory: Subscription
+meters:
+- name: source_keys
+  description: Source keys (unique source strings) managed across all projects; the primary billing metric.
+  unit: keys
+  aggregation: max
+  dimensions:
+  - account
+  - project
+- name: import_requests
+  description: Import/upload API requests counted per project per day against the plan ceiling.
+  unit: requests
+  aggregation: sum
+  dimensions:
+  - account
+  - project
+- name: fetch_requests
+  description: Fetch/export API requests counted per project per day against the plan ceiling.
+  unit: requests
+  aggregation: sum
+  dimensions:
+  - account
+  - project
+- name: subscription_seats
+  description: User seats included with every plan at no additional cost (unlimited).
+  unit: seats
+  aggregation: max
+  dimensions:
+  - account
+principles:
+- name: Visibility
+  description: Track source-key consumption across projects against the plan allowance in the Localazy dashboard.
+- name: Allocation
+  description: Use separate projects and tokens per product/team to attribute source-key usage and API request volume.
+- name: Optimization
+  description: Consolidate duplicate source keys; rely on unlimited target languages; use the Localazy CDN for production fetches to avoid daily fetch ceilings; right-size the plan tier to actual source-key counts.
+- name: Accountability
+  description: Assign owners per project; review source-key growth before it crosses a tier boundary to avoid unplanned upgrades.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

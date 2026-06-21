@@ -1,0 +1,72 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Localazy
+providerId: localazy
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: false
+tags:
+- Localization
+- Translation
+- Internationalization
+- i18n
+- L10n
+- Translation Management
+- Rate Limiting
+- Quotas
+- Throttling
+description: >-
+  The Localazy public API enforces a general throughput limit of 100 requests
+  per minute and 10 requests per second across all endpoints. In addition,
+  per-project daily ceilings apply separately to import requests and fetch
+  requests, and these daily ceilings scale with the subscription plan. For
+  fetching translations in production, Localazy recommends the Localazy CDN,
+  which has no request ceiling. Localazy AI translation operations are not
+  subject to these rate limits.
+notes: >-
+  Daily import/fetch ceilings vary by plan (Free, Professional/Autopilot,
+  Business, Enterprise). The HTTP status code returned on throttling is not
+  explicitly documented; verify on reconciliation. Higher limits are available
+  by contacting Localazy support.
+sources:
+- https://localazy.com/docs/api/limits
+- https://localazy.com/faq/api/what-is-the-api-rate-limit
+responseCodes:
+  throttled: see provider documentation
+limits:
+- name: Requests Per Minute
+  scope: account
+  metric: requests
+  limit: 100
+  notes: General limit across all public API endpoints.
+- name: Requests Per Second
+  scope: account
+  metric: requests
+  limit: 10
+  notes: General burst limit across all public API endpoints.
+- name: Import Requests Per Project Per Day
+  scope: project
+  metric: requests
+  limit: 100-1000 (varies by plan)
+  notes: Free 100, Professional/Autopilot 250, Business 1000, Enterprise customizable.
+- name: Fetch Requests Per Project Per Day
+  scope: project
+  metric: requests
+  limit: 100-5000 (varies by plan)
+  notes: Free 100, Professional/Autopilot 1000, Business 5000, Enterprise customizable.
+- name: Localazy AI Translation
+  scope: project
+  metric: requests
+  limit: not rate limited
+  notes: AI translation operations are exempt from the general public API rate limits.
+policies:
+- name: Use the CDN in Production
+  description: For fetching translations in a live application, use the Localazy CDN, which has no ceiling on requests and is globally distributed.
+- name: Tiered Daily Limits
+  description: Per-project daily import and fetch ceilings increase with plan tier and can be customized on Enterprise.
+- name: Contact Support for Higher Limits
+  description: Accounts needing higher limits can request increases from Localazy support.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

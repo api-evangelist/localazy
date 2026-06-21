@@ -1,0 +1,132 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Localazy API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Projects",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List projects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.localazy.com/projects?organization=true&languages=true"
+          },
+          "docs": "Returns the projects accessible to the supplied token, optionally including organization and language information."
+        },
+        {
+          "info": {
+            "name": "Create a project",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.localazy.com/projects",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"name\": \"My Project\",\n  \"sourceLanguage\": \"en\",\n  \"type\": \"restricted\"\n}"
+            }
+          },
+          "docs": "Creates a new project under an organization. Requires an organization token."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Import",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Import content to a project",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.localazy.com/projects/{{projectId}}/import",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"files\": [\n    {\n      \"name\": \"strings.json\",\n      \"content\": {\n        \"type\": \"json\",\n        \"en\": { \"hello\": \"Hello\" }\n      }\n    }\n  ]\n}"
+            }
+          },
+          "docs": "Imports and uploads source and translation strings into the project from one or more files."
+        },
+        {
+          "info": {
+            "name": "List available import file formats",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.localazy.com/import/formats"
+          },
+          "docs": "Returns the supported file types for importing strings and their capabilities."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Files",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List files in a project",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.localazy.com/projects/{{projectId}}/files"
+          },
+          "docs": "Returns the set of files in the project."
+        },
+        {
+          "info": {
+            "name": "List file content (keys)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.localazy.com/projects/{{projectId}}/files/{{fileId}}/keys/{{lang}}?limit=1000"
+          },
+          "docs": "Returns the keys and translations for a file in a specific language, with cursor-based pagination."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Export",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Download (export) a file in a language",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.localazy.com/projects/{{projectId}}/files/{{fileId}}/download/{{lang}}"
+          },
+          "docs": "Exports the translated file for the given language and returns the raw file contents."
+        }
+      ]
+    }
+  ]
+}

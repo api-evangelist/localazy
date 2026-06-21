@@ -1,0 +1,169 @@
+{
+  "info": {
+    "name": "Localazy API",
+    "description": "REST API for the Localazy localization and translation management platform. Import/upload, export/download, files, languages, and projects under https://api.localazy.com.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.localazy.com"
+    },
+    {
+      "key": "projectId",
+      "value": ""
+    },
+    {
+      "key": "fileId",
+      "value": ""
+    },
+    {
+      "key": "lang",
+      "value": "en"
+    }
+  ],
+  "item": [
+    {
+      "name": "Projects",
+      "item": [
+        {
+          "name": "List projects",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/projects?organization=true&languages=true",
+              "host": ["{{baseUrl}}"],
+              "path": ["projects"],
+              "query": [
+                { "key": "organization", "value": "true" },
+                { "key": "languages", "value": "true" }
+              ]
+            },
+            "description": "Returns the projects accessible to the supplied token, optionally including organization and language information."
+          }
+        },
+        {
+          "name": "Create a project",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"My Project\",\n  \"sourceLanguage\": \"en\",\n  \"type\": \"restricted\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/projects",
+              "host": ["{{baseUrl}}"],
+              "path": ["projects"]
+            },
+            "description": "Creates a new project under an organization. Requires an organization token."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Import",
+      "item": [
+        {
+          "name": "Import content to a project",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"files\": [\n    {\n      \"name\": \"strings.json\",\n      \"content\": {\n        \"type\": \"json\",\n        \"en\": { \"hello\": \"Hello\" }\n      }\n    }\n  ]\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/projects/{{projectId}}/import",
+              "host": ["{{baseUrl}}"],
+              "path": ["projects", "{{projectId}}", "import"]
+            },
+            "description": "Imports and uploads source and translation strings into the project from one or more files."
+          }
+        },
+        {
+          "name": "List available import file formats",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/import/formats",
+              "host": ["{{baseUrl}}"],
+              "path": ["import", "formats"]
+            },
+            "description": "Returns the supported file types for importing strings and their capabilities."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Files",
+      "item": [
+        {
+          "name": "List files in a project",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/projects/{{projectId}}/files",
+              "host": ["{{baseUrl}}"],
+              "path": ["projects", "{{projectId}}", "files"]
+            },
+            "description": "Returns the set of files in the project."
+          }
+        },
+        {
+          "name": "List file content (keys)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/projects/{{projectId}}/files/{{fileId}}/keys/{{lang}}?limit=1000",
+              "host": ["{{baseUrl}}"],
+              "path": ["projects", "{{projectId}}", "files", "{{fileId}}", "keys", "{{lang}}"],
+              "query": [
+                { "key": "limit", "value": "1000" }
+              ]
+            },
+            "description": "Returns the keys and translations for a file in a specific language, with cursor-based pagination."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Export",
+      "item": [
+        {
+          "name": "Download (export) a file in a language",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/projects/{{projectId}}/files/{{fileId}}/download/{{lang}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["projects", "{{projectId}}", "files", "{{fileId}}", "download", "{{lang}}"]
+            },
+            "description": "Exports the translated file for the given language and returns the raw file contents."
+          }
+        }
+      ]
+    }
+  ]
+}

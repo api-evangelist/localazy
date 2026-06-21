@@ -1,0 +1,70 @@
+aid: localazy
+name: Localazy
+review:
+  question: Does Localazy expose a documented public WebSocket API?
+  answer: false
+  date: '2026-06-21'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was created. Localazy's public API is a synchronous
+    REST (HTTPS) interface only. No Server-Sent Events (SSE) streaming or
+    WebSocket surface is documented, so there is no event-driven transport in
+    scope for AsyncAPI modeling.
+findings:
+  summary: |
+    Localazy does not publish a documented public WebSocket API. The Localazy
+    platform exposes a resource-oriented REST API over HTTPS under
+    https://api.localazy.com, authenticated with a Bearer token (project,
+    translation, or organization token). All documented operations - import /
+    upload, export / download, listing files and keys, reading project
+    languages, and managing projects - are request/response REST calls. No
+    realtime, bidirectional, or streaming WebSocket (ws:// or wss://) endpoint
+    is documented. For high-volume production reads, Localazy directs
+    developers to the Localazy CDN (HTTPS), not a WebSocket stream.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.localazy.com
+      documented: true
+    - protocol: CDN
+      scheme: https
+      note: Localazy CDN for fetching translations in production; HTTPS, no request ceiling. Not WebSocket.
+      documented: true
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented in Localazy's API reference, translation API, or any product page as of the review date.
+  endpointsConfirmedRest:
+    - GET    https://api.localazy.com/projects
+    - POST   https://api.localazy.com/projects
+    - POST   https://api.localazy.com/projects/{projectId}/import
+    - GET    https://api.localazy.com/import/formats
+    - GET    https://api.localazy.com/projects/{projectId}/files
+    - GET    https://api.localazy.com/projects/{projectId}/files/{fileId}/keys/{lang}
+    - GET    https://api.localazy.com/projects/{projectId}/files/{fileId}/download/{lang}
+    - POST   https://api.localazy.com/projects/{projectId}/ai
+sources:
+  - url: https://localazy.com/docs/api/introduction
+    type: Documentation
+    note: Describes a JSON, REST-based API over https://api.localazy.com; no WebSocket mentioned.
+  - url: https://localazy.com/docs/api/authentication
+    type: Documentation
+    note: Authentication is Authorization Bearer token (project / translation / organization). REST only.
+  - url: https://localazy.com/docs/api/import
+    type: APIReference
+    note: Import/upload is POST /projects/{projectId}/import; synchronous REST.
+  - url: https://localazy.com/docs/api/files
+    type: APIReference
+    note: Files and export endpoints are HTTPS GET; no streaming/WebSocket transport.
+  - url: https://localazy.com/docs/api/limits
+    type: Documentation
+    note: Recommends the Localazy CDN (HTTPS) for production fetches; no WebSocket.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket protocol surface exists and no SSE streaming is documented.
+    The catalog models the documented synchronous REST surface via OpenAPI
+    only; no AsyncAPI document was authored because there is no event-driven
+    transport to describe.

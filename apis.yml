@@ -1,0 +1,132 @@
+aid: localazy
+url: https://raw.githubusercontent.com/api-evangelist/localazy/refs/heads/main/apis.yml
+name: Localazy
+kind: company
+description: Localazy is a localization and translation management platform built for
+  developers. Its REST API at https://api.localazy.com lets teams import and upload
+  source content, export and download translated files, list and manage files, languages,
+  and projects, and drive AI-assisted translation - all authenticated with project,
+  translation, or organization tokens.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Localization
+- Translation
+- Internationalization
+- i18n
+- L10n
+- Translation Management
+created: '2026-06-21'
+modified: '2026-06-21'
+specificationVersion: '0.19'
+apis:
+- aid: localazy:import-upload
+  name: Localazy Import / Upload API
+  tags:
+  - Import
+  - Upload
+  - Content
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://localazy.com/docs/api/import
+  baseURL: https://api.localazy.com
+  properties:
+  - url: https://localazy.com/docs/api/import
+    type: Documentation
+  - url: https://localazy.com/docs/api/import
+    type: APIReference
+  - url: openapi/localazy-openapi.yml
+    type: OpenAPI
+  description: Imports and uploads source and translation strings into a Localazy project
+    from any supported file format, and lists the available import file formats and
+    their capabilities.
+- aid: localazy:export
+  name: Localazy Export API
+  tags:
+  - Export
+  - Download
+  - Translations
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://localazy.com/docs/api/files
+  baseURL: https://api.localazy.com
+  properties:
+  - url: https://localazy.com/docs/api/files
+    type: Documentation
+  - url: https://localazy.com/docs/api/files
+    type: APIReference
+  - url: openapi/localazy-openapi.yml
+    type: OpenAPI
+  description: Exports translated content by downloading a file in a specific language,
+    returning the localized file contents ready for use in an application.
+- aid: localazy:files
+  name: Localazy Files API
+  tags:
+  - Files
+  - Keys
+  - Content
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://localazy.com/docs/api/files
+  baseURL: https://api.localazy.com
+  properties:
+  - url: https://localazy.com/docs/api/files
+    type: Documentation
+  - url: https://localazy.com/docs/api/files
+    type: APIReference
+  - url: openapi/localazy-openapi.yml
+    type: OpenAPI
+  description: Lists the files in a project and reads file content as keys and translations
+    for a given language, with pagination and metadata options.
+- aid: localazy:languages
+  name: Localazy Languages API
+  tags:
+  - Languages
+  - Locales
+  - i18n
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://localazy.com/docs/api/projects
+  baseURL: https://api.localazy.com
+  properties:
+  - url: https://localazy.com/docs/api/projects
+    type: Documentation
+  - url: https://localazy.com/docs/api/projects
+    type: APIReference
+  - url: openapi/localazy-openapi.yml
+    type: OpenAPI
+  description: Retrieves the languages configured on a project, including the source
+    language and per-language translation statistics, via the projects endpoint with
+    the languages parameter.
+- aid: localazy:projects-management
+  name: Localazy Projects (Management) API
+  tags:
+  - Projects
+  - Management
+  - Organization
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://localazy.com/docs/api/projects
+  baseURL: https://api.localazy.com
+  properties:
+  - url: https://localazy.com/docs/api/projects
+    type: Documentation
+  - url: https://localazy.com/docs/api/projects
+    type: APIReference
+  - url: openapi/localazy-openapi.yml
+    type: OpenAPI
+  description: Lists projects accessible to a token and creates new projects under an
+    organization, returning project identifiers, metadata, type, tone, and feature
+    availability.
+common:
+- type: GitHubOrganization
+  url: https://github.com/localazy
+- type: LinkedIn
+  url: https://www.linkedin.com/company/localazy
+- type: Website
+  url: https://localazy.com
+- type: Documentation
+  url: https://localazy.com/docs/api/introduction
+- type: Plans
+  url: plans/localazy-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/localazy-rate-limits.yml
+- type: FinOps
+  url: finops/localazy-finops.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
