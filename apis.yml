@@ -113,6 +113,10 @@ apis:
     organization, returning project identifiers, metadata, type, tone, and feature
     availability.
 common:
+- type: DomainSecurity
+  url: security/localazy-domain-security.yml
+- type: Authentication
+  url: authentication/localazy-authentication.yml
 - type: GitHubOrganization
   url: https://github.com/localazy
 - type: LinkedIn
@@ -127,6 +131,8 @@ common:
   url: rate-limits/localazy-rate-limits.yml
 - type: FinOps
   url: finops/localazy-finops.yml
+- url: https://localazy.com/blog
+  type: Blog
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

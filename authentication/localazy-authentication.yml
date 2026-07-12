@@ -1,0 +1,15 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/localazy-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  description: 'Authenticate with the header `Authorization: Bearer {token}`. Tokens may be
+    a project token (read/write to one project), a translation token (AI translation only),
+    or an organization token (organization scope, by request).'
+  sources:
+  - openapi/localazy-openapi.yml
