@@ -113,6 +113,8 @@ apis:
     organization, returning project identifiers, metadata, type, tone, and feature
     availability.
 common:
+- type: AgenticAccess
+  url: agentic-access/localazy-agentic-access.yml
 - type: DomainSecurity
   url: security/localazy-domain-security.yml
 - type: Authentication
