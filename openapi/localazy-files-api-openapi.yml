@@ -1,0 +1,162 @@
+openapi: 3.0.1
+info:
+  title: Localazy Export Files API
+  description: REST API for the Localazy localization and translation management platform. Import and upload source content, export and download translated files, list files and their keys, read project languages, and manage projects. All endpoints are relative to https://api.localazy.com and authenticated with a Bearer token (project, translation, or organization token).
+  termsOfService: https://localazy.com/terms
+  contact:
+    name: Localazy Support
+    email: team@localazy.com
+    url: https://localazy.com/docs/api/introduction
+  version: '1.0'
+servers:
+- url: https://api.localazy.com
+security:
+- bearerAuth: []
+tags:
+- name: Files
+  description: List files and read file content as keys and translations.
+paths:
+  /projects/{projectId}/files:
+    get:
+      operationId: listFiles
+      tags:
+      - Files
+      summary: List files in a project
+      description: Returns the set of files in the project.
+      parameters:
+      - name: projectId
+        in: path
+        required: true
+        description: The project identifier.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A list of files.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/File'
+        '401':
+          description: Missing or invalid authentication token.
+  /projects/{projectId}/files/{fileId}/keys/{lang}:
+    get:
+      operationId: listFileKeys
+      tags:
+      - Files
+      summary: List file content (keys)
+      description: Returns the keys and translations for a file in a specific language, with cursor-based pagination.
+      parameters:
+      - name: projectId
+        in: path
+        required: true
+        description: The project identifier.
+        schema:
+          type: string
+      - name: fileId
+        in: path
+        required: true
+        description: The file identifier.
+        schema:
+          type: string
+      - name: lang
+        in: path
+        required: true
+        description: The language in the form ll-Scrp-RR (for example en, cs, pt-BR).
+        schema:
+          type: string
+      - name: deprecated
+        in: query
+        description: Include deprecated keys.
+        schema:
+          type: boolean
+      - name: limit
+        in: query
+        description: Number of results per call (maximum 1000).
+        schema:
+          type: integer
+          maximum: 1000
+      - name: next
+        in: query
+        description: Pagination cursor returned by the previous call.
+        schema:
+          type: string
+      - name: extra_info
+        in: query
+        description: Include additional metadata for each key.
+        schema:
+          type: boolean
+      - name: no_content
+        in: query
+        description: Exclude translation content from the response.
+        schema:
+          type: boolean
+      - name: unapproved
+        in: query
+        description: Include unapproved translations.
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: The keys for the file and language.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KeysResponse'
+        '401':
+          description: Missing or invalid authentication token.
+components:
+  schemas:
+    Key:
+      type: object
+      properties:
+        id:
+          type: string
+        key:
+          type: array
+          items:
+            type: string
+        value:
+          type: string
+          description: Translation value for the requested language.
+        deprecated:
+          type: boolean
+    File:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique file identifier.
+        type:
+          type: string
+          description: File format type.
+        name:
+          type: string
+        path:
+          type: string
+          description: Optional stored file path.
+        module:
+          type: string
+        productFlavors:
+          type: array
+          items:
+            type: string
+        buildType:
+          type: string
+    KeysResponse:
+      type: object
+      properties:
+        keys:
+          type: array
+          items:
+            $ref: '#/components/schemas/Key'
+        next:
+          type: string
+          description: Pagination cursor for the next page, present when more pages exist.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Authenticate with the header `Authorization: Bearer {token}`. Tokens may be a project token (read/write to one project), a translation token (AI translation only), or an organization token (organization scope, by request).'

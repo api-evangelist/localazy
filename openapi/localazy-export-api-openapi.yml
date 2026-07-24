@@ -1,0 +1,62 @@
+openapi: 3.0.1
+info:
+  title: Localazy Export API
+  description: REST API for the Localazy localization and translation management platform. Import and upload source content, export and download translated files, list files and their keys, read project languages, and manage projects. All endpoints are relative to https://api.localazy.com and authenticated with a Bearer token (project, translation, or organization token).
+  termsOfService: https://localazy.com/terms
+  contact:
+    name: Localazy Support
+    email: team@localazy.com
+    url: https://localazy.com/docs/api/introduction
+  version: '1.0'
+servers:
+- url: https://api.localazy.com
+security:
+- bearerAuth: []
+tags:
+- name: Export
+  description: Download translated files for a specific language.
+paths:
+  /projects/{projectId}/files/{fileId}/download/{lang}:
+    get:
+      operationId: downloadFile
+      tags:
+      - Export
+      summary: Download (export) a file in a language
+      description: Exports the translated file for the given language and returns the raw file contents with the appropriate content type.
+      parameters:
+      - name: projectId
+        in: path
+        required: true
+        description: The project identifier.
+        schema:
+          type: string
+      - name: fileId
+        in: path
+        required: true
+        description: The file identifier.
+        schema:
+          type: string
+      - name: lang
+        in: path
+        required: true
+        description: The language to export (for example en, cs, pt-BR).
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The exported file contents.
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+        '401':
+          description: Missing or invalid authentication token.
+        '429':
+          description: Rate limit exceeded.
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Authenticate with the header `Authorization: Bearer {token}`. Tokens may be a project token (read/write to one project), a translation token (AI translation only), or an organization token (organization scope, by request).'

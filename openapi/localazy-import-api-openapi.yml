@@ -1,0 +1,162 @@
+openapi: 3.0.1
+info:
+  title: Localazy Export Import API
+  description: REST API for the Localazy localization and translation management platform. Import and upload source content, export and download translated files, list files and their keys, read project languages, and manage projects. All endpoints are relative to https://api.localazy.com and authenticated with a Bearer token (project, translation, or organization token).
+  termsOfService: https://localazy.com/terms
+  contact:
+    name: Localazy Support
+    email: team@localazy.com
+    url: https://localazy.com/docs/api/introduction
+  version: '1.0'
+servers:
+- url: https://api.localazy.com
+security:
+- bearerAuth: []
+tags:
+- name: Import
+  description: Import and upload source and translation content.
+paths:
+  /projects/{projectId}/import:
+    post:
+      operationId: importContent
+      tags:
+      - Import
+      summary: Import content to a project
+      description: Imports and uploads source and translation strings into the project from one or more files in any supported format.
+      parameters:
+      - name: projectId
+        in: path
+        required: true
+        description: The project identifier.
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ImportRequest'
+      responses:
+        '200':
+          description: The import was accepted.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImportResponse'
+        '401':
+          description: Missing or invalid authentication token.
+        '429':
+          description: Rate limit exceeded.
+  /import/formats:
+    get:
+      operationId: listImportFormats
+      tags:
+      - Import
+      summary: List available import file formats
+      description: Returns the supported file types for importing strings, along with their capabilities (strings, plurals, arrays, and supported parameters).
+      responses:
+        '200':
+          description: A list of supported import formats.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ImportFormat'
+components:
+  schemas:
+    ImportResponse:
+      type: object
+      properties:
+        result:
+          type: string
+          description: Import result status.
+    ImportFormat:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Format identifier (for example android, json).
+        name:
+          type: string
+        supportsPlurals:
+          type: boolean
+        supportsArrays:
+          type: boolean
+        params:
+          type: object
+          description: Supported parameters for the format.
+    ImportFile:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: File name.
+        path:
+          type: string
+          description: File path without the name.
+        module:
+          type: string
+        buildType:
+          type: string
+        productFlavors:
+          type: array
+          items:
+            type: string
+        content:
+          $ref: '#/components/schemas/ImportContent'
+    ImportContent:
+      type: object
+      description: File content with language-specific strings. Includes format directives plus one entry per language code (for example en, fr, cs).
+      properties:
+        type:
+          type: string
+          default: api
+          description: File format for publishing strings.
+        plural:
+          type: string
+          description: Plural encoding type.
+        array:
+          type: string
+          description: String-array encoding method.
+        keyTransformer:
+          type: string
+          description: Key flattening approach.
+        params:
+          type: object
+          description: Additional format parameters.
+        features:
+          type: array
+          items:
+            type: string
+      additionalProperties: true
+    ImportRequest:
+      type: object
+      properties:
+        importAsNew:
+          type: boolean
+          default: false
+          description: Import translations through the review process.
+        forceCurrent:
+          type: boolean
+          default: false
+          description: Set imported translations as the current version.
+        filterSource:
+          type: boolean
+          default: true
+          description: Skip translations matching the source language.
+        forceSource:
+          type: boolean
+          default: false
+          description: Overwrite the source language.
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/ImportFile'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Authenticate with the header `Authorization: Bearer {token}`. Tokens may be a project token (read/write to one project), a translation token (AI translation only), or an organization token (organization scope, by request).'
