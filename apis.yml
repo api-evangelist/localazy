@@ -7,7 +7,20 @@ description: Localazy is a localization and translation management platform buil
   source content, export and download translated files, list and manage files, languages,
   and projects, and drive AI-assisted translation - all authenticated with project,
   translation, or organization tokens.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: true
+  try_now: true
+  public: false
+  label: Freemium (free trial) · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/localazy.png
 tags:
 - Localization
 - Translation
@@ -19,99 +32,94 @@ created: '2026-06-21'
 modified: '2026-06-21'
 specificationVersion: '0.19'
 apis:
-- aid: localazy:import-upload
-  name: Localazy Import / Upload API
-  tags:
-  - Import
-  - Upload
-  - Content
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+- aid: localazy:localazy-export-api
+  name: Localazy Export API
+  description: Download translated files for a specific language.
   humanURL: https://localazy.com/docs/api/import
   baseURL: https://api.localazy.com
-  properties:
-  - url: https://localazy.com/docs/api/import
-    type: Documentation
-  - url: https://localazy.com/docs/api/import
-    type: APIReference
-  - url: openapi/localazy-openapi.yml
-    type: OpenAPI
-  description: Imports and uploads source and translation strings into a Localazy project
-    from any supported file format, and lists the available import file formats and
-    their capabilities.
-- aid: localazy:export
-  name: Localazy Export API
   tags:
   - Export
-  - Download
-  - Translations
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://localazy.com/docs/api/files
-  baseURL: https://api.localazy.com
   properties:
-  - url: https://localazy.com/docs/api/files
-    type: Documentation
-  - url: https://localazy.com/docs/api/files
-    type: APIReference
-  - url: openapi/localazy-openapi.yml
-    type: OpenAPI
-  description: Exports translated content by downloading a file in a specific language,
-    returning the localized file contents ready for use in an application.
-- aid: localazy:files
+  - type: OpenAPI
+    url: openapi/localazy-export-api-openapi.yml
+  - type: Documentation
+    url: https://localazy.com/docs/api/import
+  - type: APIReference
+    url: https://localazy.com/docs/api/import
+  - type: Documentation
+    url: https://localazy.com/docs/api/files
+  - type: APIReference
+    url: https://localazy.com/docs/api/files
+  - type: Documentation
+    url: https://localazy.com/docs/api/projects
+  - type: APIReference
+    url: https://localazy.com/docs/api/projects
+- aid: localazy:localazy-files-api
   name: Localazy Files API
+  description: List files and read file content as keys and translations.
+  humanURL: https://localazy.com/docs/api/import
+  baseURL: https://api.localazy.com
   tags:
   - Files
-  - Keys
-  - Content
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://localazy.com/docs/api/files
-  baseURL: https://api.localazy.com
   properties:
-  - url: https://localazy.com/docs/api/files
-    type: Documentation
-  - url: https://localazy.com/docs/api/files
-    type: APIReference
-  - url: openapi/localazy-openapi.yml
-    type: OpenAPI
-  description: Lists the files in a project and reads file content as keys and translations
-    for a given language, with pagination and metadata options.
-- aid: localazy:languages
-  name: Localazy Languages API
+  - type: OpenAPI
+    url: openapi/localazy-files-api-openapi.yml
+  - type: Documentation
+    url: https://localazy.com/docs/api/import
+  - type: APIReference
+    url: https://localazy.com/docs/api/import
+  - type: Documentation
+    url: https://localazy.com/docs/api/files
+  - type: APIReference
+    url: https://localazy.com/docs/api/files
+  - type: Documentation
+    url: https://localazy.com/docs/api/projects
+  - type: APIReference
+    url: https://localazy.com/docs/api/projects
+- aid: localazy:localazy-import-api
+  name: Localazy Import API
+  description: Import and upload source and translation content.
+  humanURL: https://localazy.com/docs/api/import
+  baseURL: https://api.localazy.com
   tags:
-  - Languages
-  - Locales
-  - i18n
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://localazy.com/docs/api/projects
-  baseURL: https://api.localazy.com
+  - Import
   properties:
-  - url: https://localazy.com/docs/api/projects
-    type: Documentation
-  - url: https://localazy.com/docs/api/projects
-    type: APIReference
-  - url: openapi/localazy-openapi.yml
-    type: OpenAPI
-  description: Retrieves the languages configured on a project, including the source
-    language and per-language translation statistics, via the projects endpoint with
-    the languages parameter.
-- aid: localazy:projects-management
-  name: Localazy Projects (Management) API
+  - type: OpenAPI
+    url: openapi/localazy-import-api-openapi.yml
+  - type: Documentation
+    url: https://localazy.com/docs/api/import
+  - type: APIReference
+    url: https://localazy.com/docs/api/import
+  - type: Documentation
+    url: https://localazy.com/docs/api/files
+  - type: APIReference
+    url: https://localazy.com/docs/api/files
+  - type: Documentation
+    url: https://localazy.com/docs/api/projects
+  - type: APIReference
+    url: https://localazy.com/docs/api/projects
+- aid: localazy:localazy-projects-api
+  name: Localazy Projects API
+  description: List and create projects, and read project languages.
+  humanURL: https://localazy.com/docs/api/import
+  baseURL: https://api.localazy.com
   tags:
   - Projects
-  - Management
-  - Organization
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://localazy.com/docs/api/projects
-  baseURL: https://api.localazy.com
   properties:
-  - url: https://localazy.com/docs/api/projects
-    type: Documentation
-  - url: https://localazy.com/docs/api/projects
-    type: APIReference
-  - url: openapi/localazy-openapi.yml
-    type: OpenAPI
-  description: Lists projects accessible to a token and creates new projects under an
-    organization, returning project identifiers, metadata, type, tone, and feature
-    availability.
+  - type: OpenAPI
+    url: openapi/localazy-projects-api-openapi.yml
+  - type: Documentation
+    url: https://localazy.com/docs/api/import
+  - type: APIReference
+    url: https://localazy.com/docs/api/import
+  - type: Documentation
+    url: https://localazy.com/docs/api/files
+  - type: APIReference
+    url: https://localazy.com/docs/api/files
+  - type: Documentation
+    url: https://localazy.com/docs/api/projects
+  - type: APIReference
+    url: https://localazy.com/docs/api/projects
 common:
 - type: AgenticAccess
   url: agentic-access/localazy-agentic-access.yml
