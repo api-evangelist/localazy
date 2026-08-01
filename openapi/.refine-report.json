@@ -1,0 +1,20 @@
+{
+  "provider": "localazy",
+  "sources": [
+    "localazy-export-api-openapi.yml",
+    "localazy-files-api-openapi.yml",
+    "localazy-import-api-openapi.yml",
+    "localazy-projects-api-openapi.yml"
+  ],
+  "outputs": [
+    "localazy-export-api-openapi.yml",
+    "localazy-files-api-openapi.yml",
+    "localazy-import-api-openapi.yml",
+    "localazy-projects-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
