@@ -1,0 +1,110 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Localazy Export Files API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Files",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List files in a project",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.localazy.com/projects/:projectId/files",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The project identifier."
+              }
+            ]
+          },
+          "docs": "Returns the set of files in the project."
+        },
+        {
+          "info": {
+            "name": "List file content (keys)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.localazy.com/projects/:projectId/files/:fileId/keys/:lang",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The project identifier."
+              },
+              {
+                "name": "fileId",
+                "value": "",
+                "type": "path",
+                "description": "The file identifier."
+              },
+              {
+                "name": "lang",
+                "value": "",
+                "type": "path",
+                "description": "The language in the form ll-Scrp-RR (for example en, cs, pt-BR)."
+              },
+              {
+                "name": "deprecated",
+                "value": "",
+                "type": "query",
+                "description": "Include deprecated keys."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per call (maximum 1000)."
+              },
+              {
+                "name": "next",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor returned by the previous call."
+              },
+              {
+                "name": "extra_info",
+                "value": "",
+                "type": "query",
+                "description": "Include additional metadata for each key."
+              },
+              {
+                "name": "no_content",
+                "value": "",
+                "type": "query",
+                "description": "Exclude translation content from the response."
+              },
+              {
+                "name": "unapproved",
+                "value": "",
+                "type": "query",
+                "description": "Include unapproved translations."
+              }
+            ]
+          },
+          "docs": "Returns the keys and translations for a file in a specific language, with cursor-based pagination."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

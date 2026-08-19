@@ -1,0 +1,64 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Localazy Export Projects API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Projects",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List projects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.localazy.com/projects",
+            "params": [
+              {
+                "name": "organization",
+                "value": "",
+                "type": "query",
+                "description": "When true, includes information about the owning organization."
+              },
+              {
+                "name": "languages",
+                "value": "",
+                "type": "query",
+                "description": "When true, includes the project languages and their translation statistics."
+              }
+            ]
+          },
+          "docs": "Returns the projects accessible to the supplied token. A project token returns the single associated project; an organization token returns all organization projects."
+        },
+        {
+          "info": {
+            "name": "Create a project",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.localazy.com/projects",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new project under an organization. Requires an organization token."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

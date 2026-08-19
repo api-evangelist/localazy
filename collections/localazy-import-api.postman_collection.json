@@ -1,0 +1,354 @@
+{
+  "item": [
+    {
+      "id": "326dec45-b6db-46f0-9496-9450a111f523",
+      "name": "Import",
+      "description": {
+        "content": "Import and upload source and translation content.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "db33ae4c-257e-488e-ac76-95f90051c2f9",
+          "name": "Import content to a project",
+          "request": {
+            "name": "Import content to a project",
+            "description": {
+              "content": "Imports and uploads source and translation strings into the project from one or more files in any supported format.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectId",
+                "import"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) The project identifier."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"importAsNew\": false,\n  \"forceCurrent\": false,\n  \"filterSource\": true,\n  \"forceSource\": false,\n  \"files\": [\n    {\n      \"name\": \"<string>\",\n      \"path\": \"<string>\",\n      \"module\": \"<string>\",\n      \"buildType\": \"<string>\",\n      \"productFlavors\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"content\": {\n        \"type\": \"api\",\n        \"plural\": \"<string>\",\n        \"array\": \"<string>\",\n        \"keyTransformer\": \"<string>\",\n        \"params\": \"<object>\",\n        \"features\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"path\": \"<string>\",\n      \"module\": \"<string>\",\n      \"buildType\": \"<string>\",\n      \"productFlavors\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"content\": {\n        \"type\": \"api\",\n        \"plural\": \"<string>\",\n        \"array\": \"<string>\",\n        \"keyTransformer\": \"<string>\",\n        \"params\": \"<object>\",\n        \"features\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      }\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d64e6304-9317-4694-9f99-5cbb855c1609",
+              "name": "The import was accepted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "import"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) The project identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"importAsNew\": false,\n  \"forceCurrent\": false,\n  \"filterSource\": true,\n  \"forceSource\": false,\n  \"files\": [\n    {\n      \"name\": \"<string>\",\n      \"path\": \"<string>\",\n      \"module\": \"<string>\",\n      \"buildType\": \"<string>\",\n      \"productFlavors\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"content\": {\n        \"type\": \"api\",\n        \"plural\": \"<string>\",\n        \"array\": \"<string>\",\n        \"keyTransformer\": \"<string>\",\n        \"params\": \"<object>\",\n        \"features\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"path\": \"<string>\",\n      \"module\": \"<string>\",\n      \"buildType\": \"<string>\",\n      \"productFlavors\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"content\": {\n        \"type\": \"api\",\n        \"plural\": \"<string>\",\n        \"array\": \"<string>\",\n        \"keyTransformer\": \"<string>\",\n        \"params\": \"<object>\",\n        \"features\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5cd8dbfc-9b85-45a4-9e80-e5f1535c3554",
+              "name": "Missing or invalid authentication token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "import"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) The project identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"importAsNew\": false,\n  \"forceCurrent\": false,\n  \"filterSource\": true,\n  \"forceSource\": false,\n  \"files\": [\n    {\n      \"name\": \"<string>\",\n      \"path\": \"<string>\",\n      \"module\": \"<string>\",\n      \"buildType\": \"<string>\",\n      \"productFlavors\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"content\": {\n        \"type\": \"api\",\n        \"plural\": \"<string>\",\n        \"array\": \"<string>\",\n        \"keyTransformer\": \"<string>\",\n        \"params\": \"<object>\",\n        \"features\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"path\": \"<string>\",\n      \"module\": \"<string>\",\n      \"buildType\": \"<string>\",\n      \"productFlavors\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"content\": {\n        \"type\": \"api\",\n        \"plural\": \"<string>\",\n        \"array\": \"<string>\",\n        \"keyTransformer\": \"<string>\",\n        \"params\": \"<object>\",\n        \"features\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "43cfe7f2-1199-44cc-8811-419801628e51",
+              "name": "Rate limit exceeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "import"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) The project identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"importAsNew\": false,\n  \"forceCurrent\": false,\n  \"filterSource\": true,\n  \"forceSource\": false,\n  \"files\": [\n    {\n      \"name\": \"<string>\",\n      \"path\": \"<string>\",\n      \"module\": \"<string>\",\n      \"buildType\": \"<string>\",\n      \"productFlavors\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"content\": {\n        \"type\": \"api\",\n        \"plural\": \"<string>\",\n        \"array\": \"<string>\",\n        \"keyTransformer\": \"<string>\",\n        \"params\": \"<object>\",\n        \"features\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"path\": \"<string>\",\n      \"module\": \"<string>\",\n      \"buildType\": \"<string>\",\n      \"productFlavors\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"content\": {\n        \"type\": \"api\",\n        \"plural\": \"<string>\",\n        \"array\": \"<string>\",\n        \"keyTransformer\": \"<string>\",\n        \"params\": \"<object>\",\n        \"features\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6c14d03f-a8f3-498b-ba03-c419b5b7a7f1",
+          "name": "List available import file formats",
+          "request": {
+            "name": "List available import file formats",
+            "description": {
+              "content": "Returns the supported file types for importing strings, along with their capabilities (strings, plurals, arrays, and supported parameters).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "import",
+                "formats"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e77187d3-5b53-4fb2-b189-b9cea2503c2a",
+              "name": "A list of supported import formats.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "import",
+                    "formats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"supportsPlurals\": false,\n    \"supportsArrays\": false,\n    \"params\": {}\n  },\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"supportsPlurals\": true,\n    \"supportsArrays\": true,\n    \"params\": {}\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.localazy.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6c63f3fe-75e0-48d2-9b7e-b70be4d49da2",
+    "name": "Localazy Export Import API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the Localazy localization and translation management platform. Import and upload source content, export and download translated files, list files and their keys, read project languages, and manage projects. All endpoints are relative to https://api.localazy.com and authenticated with a Bearer token (project, translation, or organization token).\n\nContact Support:\n Name: Localazy Support\n Email: team@localazy.com",
+      "type": "text/plain"
+    }
+  }
+}

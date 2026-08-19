@@ -1,0 +1,335 @@
+{
+  "item": [
+    {
+      "id": "24aaf118-41ce-4a6e-b199-08c43e815a96",
+      "name": "Projects",
+      "description": {
+        "content": "List and create projects, and read project languages.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "df2143ee-00a0-42a6-ba53-ef0b2864d524",
+          "name": "List projects",
+          "request": {
+            "name": "List projects",
+            "description": {
+              "content": "Returns the projects accessible to the supplied token. A project token returns the single associated project; an organization token returns all organization projects.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "organization",
+                  "value": "<boolean>",
+                  "description": "When true, includes information about the owning organization."
+                },
+                {
+                  "disabled": false,
+                  "key": "languages",
+                  "value": "<boolean>",
+                  "description": "When true, includes the project languages and their translation statistics."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "35f05885-00f4-4341-bd7f-3444fa49111b",
+              "name": "A list of projects.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "organization",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "languages",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"orgId\": \"string\",\n    \"name\": \"string\",\n    \"slug\": \"string\",\n    \"image\": \"string\",\n    \"url\": \"string\",\n    \"description\": \"string\",\n    \"type\": \"string\",\n    \"tone\": \"string\",\n    \"role\": \"string\",\n    \"sourceLanguage\": 2642,\n    \"organization\": {},\n    \"languages\": [\n      {\n        \"id\": 9424,\n        \"code\": \"string\",\n        \"name\": \"string\",\n        \"rtl\": true,\n        \"progress\": 3918\n      },\n      {\n        \"id\": 3676,\n        \"code\": \"string\",\n        \"name\": \"string\",\n        \"rtl\": false,\n        \"progress\": 5646\n      }\n    ]\n  },\n  {\n    \"id\": \"string\",\n    \"orgId\": \"string\",\n    \"name\": \"string\",\n    \"slug\": \"string\",\n    \"image\": \"string\",\n    \"url\": \"string\",\n    \"description\": \"string\",\n    \"type\": \"string\",\n    \"tone\": \"string\",\n    \"role\": \"string\",\n    \"sourceLanguage\": 3133,\n    \"organization\": {},\n    \"languages\": [\n      {\n        \"id\": 4938,\n        \"code\": \"string\",\n        \"name\": \"string\",\n        \"rtl\": false,\n        \"progress\": 1575\n      },\n      {\n        \"id\": 8738,\n        \"code\": \"string\",\n        \"name\": \"string\",\n        \"rtl\": true,\n        \"progress\": 4189\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "90972909-63b4-45e5-9f74-e67d3fcb6870",
+              "name": "Missing or invalid authentication token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "organization",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "languages",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "75ce5eeb-5366-4773-821d-9fe68c4350fd",
+          "name": "Create a project",
+          "request": {
+            "name": "Create a project",
+            "description": {
+              "content": "Creates a new project under an organization. Requires an organization token.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"description\": \"\",\n  \"sourceLanguage\": \"en\",\n  \"type\": \"restricted\",\n  \"tone\": \"not_specified\",\n  \"useShareTM\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1011523a-3896-43b5-8e34-636aac0e646a",
+              "name": "The newly created project.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"description\": \"\",\n  \"sourceLanguage\": \"en\",\n  \"type\": \"restricted\",\n  \"tone\": \"not_specified\",\n  \"useShareTM\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"projectId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6ca94bc8-0b30-4332-b4f6-af19060ca5a1",
+              "name": "Missing or invalid authentication token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"description\": \"\",\n  \"sourceLanguage\": \"en\",\n  \"type\": \"restricted\",\n  \"tone\": \"not_specified\",\n  \"useShareTM\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.localazy.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d0f24ad1-9e7f-4b9c-8c86-bc9791d0fa3f",
+    "name": "Localazy Export Projects API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the Localazy localization and translation management platform. Import and upload source content, export and download translated files, list files and their keys, read project languages, and manage projects. All endpoints are relative to https://api.localazy.com and authenticated with a Bearer token (project, translation, or organization token).\n\nContact Support:\n Name: Localazy Support\n Email: team@localazy.com",
+      "type": "text/plain"
+    }
+  }
+}

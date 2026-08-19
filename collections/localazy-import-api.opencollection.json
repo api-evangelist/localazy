@@ -1,0 +1,58 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Localazy Export Import API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Import",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Import content to a project",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.localazy.com/projects/:projectId/import",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The project identifier."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Imports and uploads source and translation strings into the project from one or more files in any supported format."
+        },
+        {
+          "info": {
+            "name": "List available import file formats",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.localazy.com/import/formats"
+          },
+          "docs": "Returns the supported file types for importing strings, along with their capabilities (strings, plurals, arrays, and supported parameters)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
