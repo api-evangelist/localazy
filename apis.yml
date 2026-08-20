@@ -60,6 +60,8 @@ apis:
   humanURL: https://localazy.com/docs/api/import
   baseURL: https://api.localazy.com
   tags:
+  - File
+  tags_raw:
   - Files
   properties:
   - type: OpenAPI
@@ -104,6 +106,8 @@ apis:
   humanURL: https://localazy.com/docs/api/import
   baseURL: https://api.localazy.com
   tags:
+  - Project
+  tags_raw:
   - Projects
   properties:
   - type: OpenAPI
