@@ -7,6 +7,18 @@ description: Localazy is a localization and translation management platform buil
   source content, export and download translated files, list and manage files, languages,
   and projects, and drive AI-assisted translation - all authenticated with project,
   translation, or organization tokens.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
