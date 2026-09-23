@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Localazy Export Projects API
+  title: Localazy Projects API
   description: REST API for the Localazy localization and translation management platform. Import and upload source content, export and download translated files, list files and their keys, read project languages, and manage projects. All endpoints are relative to https://api.localazy.com and authenticated with a Bearer token (project, translation, or organization token).
   termsOfService: https://localazy.com/terms
   contact:
@@ -70,51 +70,6 @@ paths:
           description: Missing or invalid authentication token.
 components:
   schemas:
-    Project:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique project identifier.
-        orgId:
-          type: string
-          description: Organization identifier.
-        name:
-          type: string
-        slug:
-          type: string
-        image:
-          type: string
-        url:
-          type: string
-        description:
-          type: string
-        type:
-          type: string
-          description: Project visibility - public, private, or restricted.
-        tone:
-          type: string
-          description: Project tone - formal, informal, or not_specified.
-        role:
-          type: string
-          description: Current user's role on the project.
-        sourceLanguage:
-          type: integer
-          description: Source language identifier.
-        organization:
-          type: object
-          description: Feature availability and key limits for the organization.
-        languages:
-          type: array
-          description: Language objects with translation statistics (when languages=true).
-          items:
-            $ref: '#/components/schemas/Language'
-    CreateProjectResponse:
-      type: object
-      properties:
-        projectId:
-          type: string
-          description: Identifier of the newly created project.
     CreateProjectRequest:
       type: object
       required:
@@ -157,6 +112,51 @@ components:
         progress:
           type: integer
           description: Translation completion percentage.
+    CreateProjectResponse:
+      type: object
+      properties:
+        projectId:
+          type: string
+          description: Identifier of the newly created project.
+    Project:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique project identifier.
+        orgId:
+          type: string
+          description: Organization identifier.
+        name:
+          type: string
+        slug:
+          type: string
+        image:
+          type: string
+        url:
+          type: string
+        description:
+          type: string
+        type:
+          type: string
+          description: Project visibility - public, private, or restricted.
+        tone:
+          type: string
+          description: Project tone - formal, informal, or not_specified.
+        role:
+          type: string
+          description: Current user's role on the project.
+        sourceLanguage:
+          type: integer
+          description: Source language identifier.
+        organization:
+          type: object
+          description: Feature availability and key limits for the organization.
+        languages:
+          type: array
+          description: Language objects with translation statistics (when languages=true).
+          items:
+            $ref: '#/components/schemas/Language'
   securitySchemes:
     bearerAuth:
       type: http

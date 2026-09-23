@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Localazy Export Import API
+  title: Localazy Import API
   description: REST API for the Localazy localization and translation management platform. Import and upload source content, export and download translated files, list files and their keys, read project languages, and manage projects. All endpoints are relative to https://api.localazy.com and authenticated with a Bearer token (project, translation, or organization token).
   termsOfService: https://localazy.com/terms
   contact:
@@ -65,12 +65,6 @@ paths:
                   $ref: '#/components/schemas/ImportFormat'
 components:
   schemas:
-    ImportResponse:
-      type: object
-      properties:
-        result:
-          type: string
-          description: Import result status.
     ImportFormat:
       type: object
       properties:
@@ -86,27 +80,29 @@ components:
         params:
           type: object
           description: Supported parameters for the format.
-    ImportFile:
+    ImportRequest:
       type: object
-      required:
-      - name
       properties:
-        name:
-          type: string
-          description: File name.
-        path:
-          type: string
-          description: File path without the name.
-        module:
-          type: string
-        buildType:
-          type: string
-        productFlavors:
+        importAsNew:
+          type: boolean
+          default: false
+          description: Import translations through the review process.
+        forceCurrent:
+          type: boolean
+          default: false
+          description: Set imported translations as the current version.
+        filterSource:
+          type: boolean
+          default: true
+          description: Skip translations matching the source language.
+        forceSource:
+          type: boolean
+          default: false
+          description: Overwrite the source language.
+        files:
           type: array
           items:
-            type: string
-        content:
-          $ref: '#/components/schemas/ImportContent'
+            $ref: '#/components/schemas/ImportFile'
     ImportContent:
       type: object
       description: File content with language-specific strings. Includes format directives plus one entry per language code (for example en, fr, cs).
@@ -132,29 +128,33 @@ components:
           items:
             type: string
       additionalProperties: true
-    ImportRequest:
+    ImportResponse:
       type: object
       properties:
-        importAsNew:
-          type: boolean
-          default: false
-          description: Import translations through the review process.
-        forceCurrent:
-          type: boolean
-          default: false
-          description: Set imported translations as the current version.
-        filterSource:
-          type: boolean
-          default: true
-          description: Skip translations matching the source language.
-        forceSource:
-          type: boolean
-          default: false
-          description: Overwrite the source language.
-        files:
+        result:
+          type: string
+          description: Import result status.
+    ImportFile:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: File name.
+        path:
+          type: string
+          description: File path without the name.
+        module:
+          type: string
+        buildType:
+          type: string
+        productFlavors:
           type: array
           items:
-            $ref: '#/components/schemas/ImportFile'
+            type: string
+        content:
+          $ref: '#/components/schemas/ImportContent'
   securitySchemes:
     bearerAuth:
       type: http

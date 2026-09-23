@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Localazy Export Files API
+  title: Localazy Files API
   description: REST API for the Localazy localization and translation management platform. Import and upload source content, export and download translated files, list files and their keys, read project languages, and manage projects. All endpoints are relative to https://api.localazy.com and authenticated with a Bearer token (project, translation, or organization token).
   termsOfService: https://localazy.com/terms
   contact:
@@ -109,20 +109,6 @@ paths:
           description: Missing or invalid authentication token.
 components:
   schemas:
-    Key:
-      type: object
-      properties:
-        id:
-          type: string
-        key:
-          type: array
-          items:
-            type: string
-        value:
-          type: string
-          description: Translation value for the requested language.
-        deprecated:
-          type: boolean
     File:
       type: object
       properties:
@@ -145,6 +131,20 @@ components:
             type: string
         buildType:
           type: string
+    Key:
+      type: object
+      properties:
+        id:
+          type: string
+        key:
+          type: array
+          items:
+            type: string
+        value:
+          type: string
+          description: Translation value for the requested language.
+        deprecated:
+          type: boolean
     KeysResponse:
       type: object
       properties:
