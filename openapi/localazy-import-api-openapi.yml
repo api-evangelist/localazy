@@ -65,21 +65,12 @@ paths:
                   $ref: '#/components/schemas/ImportFormat'
 components:
   schemas:
-    ImportFormat:
+    ImportResponse:
       type: object
       properties:
-        id:
+        result:
           type: string
-          description: Format identifier (for example android, json).
-        name:
-          type: string
-        supportsPlurals:
-          type: boolean
-        supportsArrays:
-          type: boolean
-        params:
-          type: object
-          description: Supported parameters for the format.
+          description: Import result status.
     ImportRequest:
       type: object
       properties:
@@ -103,6 +94,27 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ImportFile'
+    ImportFile:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: File name.
+        path:
+          type: string
+          description: File path without the name.
+        module:
+          type: string
+        buildType:
+          type: string
+        productFlavors:
+          type: array
+          items:
+            type: string
+        content:
+          $ref: '#/components/schemas/ImportContent'
     ImportContent:
       type: object
       description: File content with language-specific strings. Includes format directives plus one entry per language code (for example en, fr, cs).
@@ -128,33 +140,21 @@ components:
           items:
             type: string
       additionalProperties: true
-    ImportResponse:
+    ImportFormat:
       type: object
       properties:
-        result:
+        id:
           type: string
-          description: Import result status.
-    ImportFile:
-      type: object
-      required:
-      - name
-      properties:
+          description: Format identifier (for example android, json).
         name:
           type: string
-          description: File name.
-        path:
-          type: string
-          description: File path without the name.
-        module:
-          type: string
-        buildType:
-          type: string
-        productFlavors:
-          type: array
-          items:
-            type: string
-        content:
-          $ref: '#/components/schemas/ImportContent'
+        supportsPlurals:
+          type: boolean
+        supportsArrays:
+          type: boolean
+        params:
+          type: object
+          description: Supported parameters for the format.
   securitySchemes:
     bearerAuth:
       type: http
