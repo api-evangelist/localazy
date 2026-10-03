@@ -109,16 +109,20 @@ paths:
           description: Missing or invalid authentication token.
 components:
   schemas:
-    KeysResponse:
+    Key:
       type: object
       properties:
-        keys:
+        id:
+          type: string
+        key:
           type: array
           items:
-            $ref: '#/components/schemas/Key'
-        next:
+            type: string
+        value:
           type: string
-          description: Pagination cursor for the next page, present when more pages exist.
+          description: Translation value for the requested language.
+        deprecated:
+          type: boolean
     File:
       type: object
       properties:
@@ -141,20 +145,16 @@ components:
             type: string
         buildType:
           type: string
-    Key:
+    KeysResponse:
       type: object
       properties:
-        id:
-          type: string
-        key:
+        keys:
           type: array
           items:
-            type: string
-        value:
+            $ref: '#/components/schemas/Key'
+        next:
           type: string
-          description: Translation value for the requested language.
-        deprecated:
-          type: boolean
+          description: Pagination cursor for the next page, present when more pages exist.
   securitySchemes:
     bearerAuth:
       type: http
