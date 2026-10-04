@@ -70,6 +70,27 @@ paths:
           description: Missing or invalid authentication token.
 components:
   schemas:
+    CreateProjectResponse:
+      type: object
+      properties:
+        projectId:
+          type: string
+          description: Identifier of the newly created project.
+    Language:
+      type: object
+      properties:
+        id:
+          type: integer
+        code:
+          type: string
+          description: Language code (for example en, cs, pt-BR).
+        name:
+          type: string
+        rtl:
+          type: boolean
+        progress:
+          type: integer
+          description: Translation completion percentage.
     CreateProjectRequest:
       type: object
       required:
@@ -97,27 +118,6 @@ components:
         useShareTM:
           type: boolean
           default: true
-    Language:
-      type: object
-      properties:
-        id:
-          type: integer
-        code:
-          type: string
-          description: Language code (for example en, cs, pt-BR).
-        name:
-          type: string
-        rtl:
-          type: boolean
-        progress:
-          type: integer
-          description: Translation completion percentage.
-    CreateProjectResponse:
-      type: object
-      properties:
-        projectId:
-          type: string
-          description: Identifier of the newly created project.
     Project:
       type: object
       properties:
