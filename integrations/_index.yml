@@ -38,7 +38,7 @@
     app_slug: localazy
     beta: false
     builder: unknown (not in the directory record)
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: localazy-strapi-own
   label: Strapi (own)
