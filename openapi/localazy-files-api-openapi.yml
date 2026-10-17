@@ -123,6 +123,16 @@ components:
           description: Translation value for the requested language.
         deprecated:
           type: boolean
+    KeysResponse:
+      type: object
+      properties:
+        keys:
+          type: array
+          items:
+            $ref: '#/components/schemas/Key'
+        next:
+          type: string
+          description: Pagination cursor for the next page, present when more pages exist.
     File:
       type: object
       properties:
@@ -145,16 +155,6 @@ components:
             type: string
         buildType:
           type: string
-    KeysResponse:
-      type: object
-      properties:
-        keys:
-          type: array
-          items:
-            $ref: '#/components/schemas/Key'
-        next:
-          type: string
-          description: Pagination cursor for the next page, present when more pages exist.
   securitySchemes:
     bearerAuth:
       type: http

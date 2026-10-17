@@ -65,12 +65,6 @@ paths:
                   $ref: '#/components/schemas/ImportFormat'
 components:
   schemas:
-    ImportResponse:
-      type: object
-      properties:
-        result:
-          type: string
-          description: Import result status.
     ImportContent:
       type: object
       description: File content with language-specific strings. Includes format directives plus one entry per language code (for example en, fr, cs).
@@ -96,27 +90,6 @@ components:
           items:
             type: string
       additionalProperties: true
-    ImportFile:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          description: File name.
-        path:
-          type: string
-          description: File path without the name.
-        module:
-          type: string
-        buildType:
-          type: string
-        productFlavors:
-          type: array
-          items:
-            type: string
-        content:
-          $ref: '#/components/schemas/ImportContent'
     ImportFormat:
       type: object
       properties:
@@ -155,6 +128,33 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ImportFile'
+    ImportResponse:
+      type: object
+      properties:
+        result:
+          type: string
+          description: Import result status.
+    ImportFile:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: File name.
+        path:
+          type: string
+          description: File path without the name.
+        module:
+          type: string
+        buildType:
+          type: string
+        productFlavors:
+          type: array
+          items:
+            type: string
+        content:
+          $ref: '#/components/schemas/ImportContent'
   securitySchemes:
     bearerAuth:
       type: http
