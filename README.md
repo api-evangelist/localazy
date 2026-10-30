@@ -1,4 +1,4 @@
-# Localazy (localazy)
+# Localazy
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,140 +66,122 @@
 
 Localazy is a localization and translation management platform built for developers. Its REST API at https://api.localazy.com lets teams import and upload source content, export and download translated files, list and manage files, languages, and projects, and drive AI-assisted translation - all authenticated with project, translation, or organization tokens.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/localazy/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/localazy/refs/heads/main/apis.yml)
+**Areas:** Localization · Translation · Internationalization · i18n · L10n · Translation Management
 
-## Tags
+## Localazy on APIs.io
 
-- Localization
-- Translation
-- Internationalization
-- i18n
-- L10n
-- Translation Management
+Everything profiled for Localazy is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/localazy/](https://apis.io/providers/localazy/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (4)
 
-- **Created:** 2026-06-21
-- **Modified:** 2026-06-21
+- [Localazy Export API](https://apis.io/apis/localazy/localazy-export-api/) — Download translated files for a specific language.
+- [Localazy Files API](https://apis.io/apis/localazy/localazy-files-api/) — List files and read file content as keys and translations.
+- [Localazy Import API](https://apis.io/apis/localazy/localazy-import-api/) — Import and upload source and translation content.
+- [Localazy Projects API](https://apis.io/apis/localazy/localazy-projects-api/) — List and create projects, and read project languages.
 
-## APIs
+### Published properties
 
-### Localazy Import / Upload API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Imports and uploads source and translation strings into a Localazy project from any supported file format, and lists the available import file formats and their capabilities.
+#### Agentic access (1)
 
-- **Human URL:** [https://localazy.com/docs/api/import](https://localazy.com/docs/api/import)
-- **Base URL:** `https://api.localazy.com`
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags
+- [Localazy Agentic Access](https://apis.io/agentic-access/localazy/localazy-agentic-access/)
 
-- Import
-- Upload
-- Content
+#### Collections (5)
 
-#### Properties
+Postman and Open Collection request collections.
 
-- [Documentation](https://localazy.com/docs/api/import)
-- [API Reference](https://localazy.com/docs/api/import)
-- [OpenAPI](openapi/localazy-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/localazy.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/localazy.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Localazy API](https://apis.io/collections/localazy/open-localazy/)
+- [Localazy Export API](https://apis.io/collections/localazy/open-localazy-export-api/)
+- [Localazy Export Files API](https://apis.io/collections/localazy/open-localazy-files-api/)
+- [Localazy Export Import API](https://apis.io/collections/localazy/open-localazy-import-api/)
+- [Localazy Export Projects API](https://apis.io/collections/localazy/open-localazy-projects-api/)
 
-### Localazy Export API
+#### Security (2)
 
-Exports translated content by downloading a file in a specific language, returning the localized file contents ready for use in an application.
+Authentication, trust centre, and vulnerability disclosure.
 
-- **Human URL:** [https://localazy.com/docs/api/files](https://localazy.com/docs/api/files)
-- **Base URL:** `https://api.localazy.com`
+- [Localazy Authentication](https://apis.io/security/localazy/localazy-authentication/)
+- [Localazy Domain Security](https://apis.io/security/localazy/localazy-domain-security/)
 
-#### Tags
+#### Plans and pricing (1)
 
-- Export
-- Download
-- Translations
+Published plans, tiers and prices.
 
-#### Properties
+- [Localazy Plans Pricing](https://apis.io/plans/localazy/localazy-plans-pricing/)
 
-- [Documentation](https://localazy.com/docs/api/files)
-- [API Reference](https://localazy.com/docs/api/files)
-- [OpenAPI](openapi/localazy-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/localazy.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/localazy.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Rate limits (1)
 
-### Localazy Files API
+Published request limits.
 
-Lists the files in a project and reads file content as keys and translations for a given language, with pagination and metadata options.
+- [Localazy Rate Limits](https://apis.io/rate-limits/localazy/localazy-rate-limits/)
 
-- **Human URL:** [https://localazy.com/docs/api/files](https://localazy.com/docs/api/files)
-- **Base URL:** `https://api.localazy.com`
+#### FinOps (1)
 
-#### Tags
+What the API costs to run, by operation.
 
-- Files
-- Keys
-- Content
+- [Localazy Finops](https://apis.io/finops/localazy/localazy-finops/)
 
-#### Properties
+## Where to find this API
 
-- [Documentation](https://localazy.com/docs/api/files)
-- [API Reference](https://localazy.com/docs/api/files)
-- [OpenAPI](openapi/localazy-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/localazy.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/localazy.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-### Localazy Languages API
-
-Retrieves the languages configured on a project, including the source language and per-language translation statistics, via the projects endpoint with the languages parameter.
-
-- **Human URL:** [https://localazy.com/docs/api/projects](https://localazy.com/docs/api/projects)
-- **Base URL:** `https://api.localazy.com`
-
-#### Tags
-
-- Languages
-- Locales
-- i18n
-
-#### Properties
-
-- [Documentation](https://localazy.com/docs/api/projects)
-- [API Reference](https://localazy.com/docs/api/projects)
-- [OpenAPI](openapi/localazy-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/localazy.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/localazy.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Localazy Projects (Management) API
-
-Lists projects accessible to a token and creates new projects under an organization, returning project identifiers, metadata, type, tone, and feature availability.
-
-- **Human URL:** [https://localazy.com/docs/api/projects](https://localazy.com/docs/api/projects)
-- **Base URL:** `https://api.localazy.com`
-
-#### Tags
-
-- Projects
-- Management
-- Organization
-
-#### Properties
-
-- [Documentation](https://localazy.com/docs/api/projects)
-- [API Reference](https://localazy.com/docs/api/projects)
-- [OpenAPI](openapi/localazy-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/localazy.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/localazy.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [GitHub Organization](https://github.com/localazy)
-- [LinkedIn](https://www.linkedin.com/company/localazy)
 - [Website](https://localazy.com)
 - [Documentation](https://localazy.com/docs/api/introduction)
-- [Plans](plans/localazy-plans-pricing.yml)
-- [Rate Limits](rate-limits/localazy-rate-limits.yml)
-- [Fin Ops](finops/localazy-finops.yml)
+- [Blog](https://localazy.com/blog)
+- [GitHub](https://github.com/localazy)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 27.2** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 50.7 |
+| Contract governance | 0.0 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 31.0 |
+| Access clarity | 7.9 |
+
+**Agent readiness 17.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 11.8** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/localazy/](https://apis.io/providers/localazy/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Localazy: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/localazy/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
